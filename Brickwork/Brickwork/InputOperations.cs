@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Brickwork
-{
-    class InputOperations //
+{   
+    // Input operations connected to the first layer
+    class InputOperations 
     {
         public int SetBrickWallDimensions() // set the wall dimentions, checks the input values from the user and validates them 
         {
@@ -34,20 +35,22 @@ namespace Brickwork
             return dimension;
         }
 
-        public int[,] InputBrickWall(int M, int N) // takes how many rows and columns are in the brick wall, reads the user input and fills the data into an array, which represents the brick wall   
+        // takes how many rows and columns are in the brick wall, reads the user input and fills the data into an array, which represents the brick wall   
+        public int[,] InputBrickWall(int M, int N) 
         {
-            int[,] wall = new int[M, N];
+            // array representing the first layer, created by the user
+            int[,] inputWall = new int[M, N];
 
             for (int i = 0; i < M; i++)
             {
-
-                string[] row = Console.ReadLine().Split(" "); //reads the user input line and separates the values by a space
+                //reads the user input line and separates the values by a space
+                string[] row = Console.ReadLine().Split(" "); 
 
                 for (int j = 0; j < N; j++)
                 {
                     try
                     {
-                        wall[i, j] = Int32.Parse(row[j]);
+                        inputWall[i, j] = Int32.Parse(row[j]);
 
                     }
                     catch (FormatException)
@@ -61,10 +64,12 @@ namespace Brickwork
                 }
             }
 
-            Validate(wall, M, N);
-            return wall;
+            Validate(inputWall, M, N);
+            return inputWall;
         }
-        private void Validate(int[,] wall, int M, int N) //Validates if there is any brick that spans more than 2 rows or columns, or if there are invalid values
+
+        //Validates if there is any brick that spans more than 2 rows or columns, or if there are invalid values
+        private void Validate(int[,] wall, int M, int N) 
         {
             for (int i = 0; i < M; i++)
             {

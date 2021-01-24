@@ -9,9 +9,10 @@ namespace Brickwork
         // Builds the second layer based on limitations of the first layer. 
         public int[,] BuildSecondLayer(int[,] inputWall, int M, int N)
         {
-
+            //represents the second layer of the brick wall
             int[,] outputWall = new int[M, N];
-            int brickCounter = 1;//The number of the next brick
+            //represents the number of the current brick
+            int brickCounter = 1;
             for (int i = 0; i < M - 1; i += 2)
             {
                 for (int j = 0; j < N - 1; j += 2)
@@ -39,11 +40,15 @@ namespace Brickwork
             return outputWall;
         }
 
+        //prints the second layer onto the console
         public void PrintOutputWall( int[,] outputWall, int M, int N)
         {
-            string[] output = new string[M * 2 + 1];//Contains the string that will be outputed
+            //Contains the string that will be outputed
+            string[] output = new string[M * 2 + 1];
             output[0] = new string('*', N * 2 + 1);
-            StringBuilder outputTopRow = new StringBuilder();//Contains the current top row
+            //Contains the current top row
+            StringBuilder outputTopRow = new StringBuilder();
+            //Contains the current bottom row
             StringBuilder outputBottomRow = new StringBuilder();//Contains the current bottom row
             for (int i = 0; i < M; i++)
             {
